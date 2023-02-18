@@ -7,6 +7,18 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Bienvenido</h1>
+    <h1>Home</h1>
+
+    {{-- Si estas logueado --}}
+    @auth
+    {{-- Obtener datos del usuario logueado auth()->user->fila de la tabla --}}
+        <p>Bienvenido {{ auth()->user()->name ??  auth()->user()->username}} estas autenticado a la pagina</p>
+        <a href="{{ route('logout.logout') }}">Logout</a>
+    @endauth
+
+    {{-- Si no estas logueado --}}
+    @guest
+        <p>Para ver el contenido <a href="{{ route('login.index') }}">inicia sesion</a></p>
+    @endguest
 </body>
 </html>
