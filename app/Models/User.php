@@ -20,6 +20,7 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'username',
         'password',
     ];
 
@@ -41,4 +42,10 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    //Hash a Password
+    //Nombre de la funcion para que funcione automaticamente "set"+ "Nombre del atributo" + Attribute
+    public function setPasswordAttribute($value){
+        $this->attributes['password'] = \bcrypt($value);
+    }
 }
