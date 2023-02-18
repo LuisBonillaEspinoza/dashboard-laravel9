@@ -2,7 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegisterController;
-
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\HomeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,3 +21,8 @@ Route::get('/', function () {
 
 Route::get('/registro',[RegisterController::class,'index'])->name('register.index');
 Route::post('/registro/guardar',[RegisterController::class,'store'])->name('register.store');
+
+Route::get('/login',[LoginController::class,'index'])->name('login.index');
+Route::post('/login',[LoginController::class,'login'])->name('login.login');
+
+Route::get('/home',[HomeController::class,'index'])->name('home.index');
